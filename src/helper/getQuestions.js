@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import getDataFromAPI from "./getDataFromAPI";
 
 export default async function getQAObject() {
@@ -13,6 +14,7 @@ export default async function getQAObject() {
       choicesArray,
       choosenAnswer: "",
       isCorrect: false,
+      id: nanoid(),
     };
   });
 
