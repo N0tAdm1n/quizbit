@@ -46,7 +46,6 @@ function App() {
 				id={ques.id}
 				question={ques.question}
 				answerArr={ques.choicesArray}
-				chooseAnswer={chooseAnswer}
 			/>
 		);
 	});
