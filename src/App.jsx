@@ -22,14 +22,17 @@ function App() {
 	}
 
 	function chooseAnswer(answer, id) {
-		setQuestionsArr(prevData => prevData.map(ele => {
-			return ele.id == id ? {
-				...ele, choosenAnswer: answer, isCorrect: ele.choosenAnswer == ele.correctAnswer ? 
-				true : 
-				false} : 
-				ele;
-		}	
-		))
+		setQuestionsArr((prevData) =>
+			prevData.map((ele) => {
+				return ele.id == id
+					? {
+							...ele,
+							choosenAnswer: answer,
+							isCorrect: ele.choosenAnswer == ele.correctAnswer ? true : false,
+					  }
+					: ele;
+			})
+		);
 	}
 
 	useEffect(() => {
@@ -37,14 +40,20 @@ function App() {
 		setIsSubmitted(false);
 	}, []);
 
+	const questionElement = questionsArr.map((ques) => {
+		return (
+			<Question
+				id={ques.id}
+				question={ques.question}
+				answerArr={ques.choicesArray}
+				chooseAnswer={chooseAnswer}
+			/>
+		);
+	});
+
 	return (
 		<>
-			<Question
-				id={1}
-				question={"Question"}
-				answerArr={["ans1", "ans2", "ans3", "ans4",]}
-				correctAnswer={"ans2"}
-			/>
+			<div className="Question-List">{questionElement}</div>
 			<button onClick={handleClick}>Click</button>
 		</>
 	);
