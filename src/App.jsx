@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import getQAObject from "./helper/getQuestions";
+import Question from "./components/Question";
 
 function App() {
 	const [questionsArr, setQuestionsArr] = useState([]);
+	const [isSubmitted, setIsSubmitted] = useState(false);
 
 	async function handleClick() {
 		console.log(questionsArr);
+		setIsSubmitted(true);
 	}
 
 	async function getNewQuestions() {
@@ -17,12 +20,31 @@ function App() {
 			console.error(error);
 		}
 	}
+
+	function chooseAnswer(answer, id) {
+		setQuestionsArr(prevData => prevData.map(ele => {
+			return ele.id == id ? {
+				...ele, choosenAnswer: answer, isCorrect: ele.choosenAnswer == ele.correctAnswer ? 
+				true : 
+				false} : 
+				ele;
+		}	
+		))
+	}
+
 	useEffect(() => {
 		getNewQuestions();
+		setIsSubmitted(false);
 	}, []);
 
 	return (
 		<>
+			<Question
+				id={1}
+				question={"Question"}
+				answerArr={["ans1", "ans2", "ans3", "ans4",]}
+				correctAnswer={"ans2"}
+			/>
 			<button onClick={handleClick}>Click</button>
 		</>
 	);
