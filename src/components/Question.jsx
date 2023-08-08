@@ -1,6 +1,13 @@
 import OptionButton from "./OptionButton";
 
-function Question({ question, answerArr, id, chooseAnswer }) {
+function Question({
+	question,
+	answerArr,
+	id,
+	chooseAnswer,
+	correctAnswer,
+	isSubmitted,
+}) {
 	const answerButtonElements = answerArr.map((ele) => {
 		return (
 			<OptionButton
@@ -8,6 +15,8 @@ function Question({ question, answerArr, id, chooseAnswer }) {
 				chooseAnswer={chooseAnswer}
 				id={id}
 				isHeld={ele.isHeld}
+				correctAnswer={correctAnswer}
+				isSubmitted={isSubmitted}
 			/>
 		);
 	});

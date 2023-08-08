@@ -59,6 +59,8 @@ function App() {
 				question={ques.question}
 				answerArr={ques.choicesArray}
 				chooseAnswer={chooseAnswer}
+				isSubmitted={isSubmitted}
+				correctAnswer={ques.correctAnswer}
 			/>
 		);
 	});
@@ -66,7 +68,7 @@ function App() {
 	return (
 		<>
 			<div className="Question-List">{questionElement}</div>
-			<button onClick={handleClick}>Click</button>
+			<button onClick={handleClick}>Submit</button>
 		</>
 	);
 }
