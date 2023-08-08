@@ -24,11 +24,23 @@ function App() {
 	function chooseAnswer(answer, id) {
 		setQuestionsArr((prevData) =>
 			prevData.map((ele) => {
+				console.log(ele.choicesArray);
 				return ele.id == id
 					? {
 							...ele,
 							choosenAnswer: answer,
 							isCorrect: ele.choosenAnswer == ele.correctAnswer ? true : false,
+							choicesArray: ele.choicesArray.map((ans) => {
+								return ans.answer == answer
+									? {
+											answer: ans.answer,
+											isHeld: true,
+									  }
+									: {
+											answer: ans.answer,
+											isHeld: false,
+									  };
+							}),
 					  }
 					: ele;
 			})
@@ -46,6 +58,7 @@ function App() {
 				id={ques.id}
 				question={ques.question}
 				answerArr={ques.choicesArray}
+				chooseAnswer={chooseAnswer}
 			/>
 		);
 	});

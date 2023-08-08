@@ -1,10 +1,11 @@
-function OptionButton({ value, id, chooseAnswer }) {
-	console.log(value);
-
+function OptionButton({ value, id, chooseAnswer, isHeld }) {
 	return (
 		<button
+			style={{
+				backgroundColor: isHeld ? "grey" : "transparent",
+			}}
 			onClick={() => {
-				chooseAnswer(id, value);
+				chooseAnswer(value, id);
 			}}
 		>
 			{value}

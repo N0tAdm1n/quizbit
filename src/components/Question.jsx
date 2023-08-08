@@ -2,12 +2,12 @@ import OptionButton from "./OptionButton";
 
 function Question({ question, answerArr, id, chooseAnswer }) {
 	const answerButtonElements = answerArr.map((ele) => {
-		console.log(ele);
 		return (
 			<OptionButton
-				value={ele}
+				value={ele.answer}
 				chooseAnswer={chooseAnswer}
 				id={id}
+				isHeld={ele.isHeld}
 			/>
 		);
 	});
