@@ -23,7 +23,9 @@ function OptionButton({
 				backgroundColor: bgColor,
 			}}
 			onClick={() => {
-				chooseAnswer(value, id);
+				if (!isSubmitted) {
+					chooseAnswer(value, id);
+				}
 			}}
 		>
 			{value}
