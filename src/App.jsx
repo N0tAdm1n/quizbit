@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import getQAObject from "./helper/getQuestions";
 import Question from "./components/Question";
+import TitlePage from "./components/TitlePage";
 
 function App() {
+	const [page, setPage] = useState("title");
 	const [questionsArr, setQuestionsArr] = useState([]);
 	const [isSubmitted, setIsSubmitted] = useState(false);
 
-	async function handleClick() {
-		console.log(questionsArr);
+	async function handleSubmit() {
 		setIsSubmitted(true);
 	}
 
@@ -24,7 +25,6 @@ function App() {
 	function chooseAnswer(answer, id) {
 		setQuestionsArr((prevData) =>
 			prevData.map((ele) => {
-				console.log(ele.choicesArray);
 				return ele.id == id
 					? {
 							...ele,
@@ -47,11 +47,6 @@ function App() {
 		);
 	}
 
-	useEffect(() => {
-		getNewQuestions();
-		setIsSubmitted(false);
-	}, []);
-
 	const questionElement = questionsArr.map((ques) => {
 		return (
 			<Question
@@ -65,10 +60,34 @@ function App() {
 		);
 	});
 
+	function getPage() {
+		if (page == "title") return <TitlePage />;
+		else if (page == "game") {
+			return <div className="Question-List">{questionElement}</div>;
+		}
+	}
+
+	function startGame() {
+		getNewQuestions();
+		setPage("game");
+		setIsSubmitted(false);
+	}
+
 	return (
 		<>
-			<div className="Question-List">{questionElement}</div>
-			<button onClick={handleClick}>Submit</button>
+			{getPage()}
+
+			{page == "title" && <button onClick={startGame}>Start</button>}
+
+			{/* <div className="Question-List">{questionElement}</div> */}
+
+			{page == "game" && isSubmitted == false && (
+				<button onClick={handleSubmit}>Submit</button>
+			)}
+
+			{page == "game" && isSubmitted == true && (
+				<button onClick={startGame}>New quiz</button>
+			)}
 		</>
 	);
 }
