@@ -29,7 +29,7 @@ function App() {
 					? {
 							...ele,
 							choosenAnswer: answer,
-							isCorrect: ele.choosenAnswer == ele.correctAnswer ? true : false,
+							isCorrect: answer == ele.correctAnswer ? true : false,
 							choicesArray: ele.choicesArray.map((ans) => {
 								return ans.answer == answer
 									? {
@@ -73,13 +73,26 @@ function App() {
 		setIsSubmitted(false);
 	}
 
+	function getScore() {
+		console.log(questionsArr);
+		let score = 0;
+		questionsArr.forEach((ele) => {
+			if (ele.isCorrect) score++;
+		});
+		return (
+			<>
+				<p>You scored: {score}</p>
+			</>
+		);
+	}
+
 	return (
 		<>
 			{getPage()}
 
-			{page == "title" && <button onClick={startGame}>Start</button>}
+			{isSubmitted && getScore()}
 
-			{/* <div className="Question-List">{questionElement}</div> */}
+			{page == "title" && <button onClick={startGame}>Start</button>}
 
 			{page == "game" && isSubmitted == false && (
 				<button onClick={handleSubmit}>Submit</button>
