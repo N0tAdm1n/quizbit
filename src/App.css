@@ -9,10 +9,23 @@
 }
 
 .question {
-  background-color: aqua;
   width: 700px;
   text-align: center;
   margin: 0;
   margin-top: 20px;
   font-size: 1.3rem;
+}
+
+.answers-container {
+  display: grid;
+  width: 700px;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  padding: 10px;
+}
+
+.answers-container>button {
+  border-radius: 50px;
+  font-size: 1rem;
 }

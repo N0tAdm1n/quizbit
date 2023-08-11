@@ -12,9 +12,9 @@ function OptionButton({
 	} else if (value != correctAnswer && isSubmitted && isHeld) {
 		bgColor = "red";
 	} else if (isHeld) {
-		bgColor = "grey";
+		bgColor = "rgb(179, 215, 245)";
 	} else {
-		bgColor = "transparent";
+		bgColor = "rgb(224, 225, 226)";
 	}
 
 	return (

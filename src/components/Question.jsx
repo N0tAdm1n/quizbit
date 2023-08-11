@@ -24,7 +24,7 @@ function Question({
 	return (
 		<div>
 			<p className="question">{question}</p>
-			{answerButtonElements}
+			<div className="answers-container">{answerButtonElements}</div>
 		</div>
 	);
 }
