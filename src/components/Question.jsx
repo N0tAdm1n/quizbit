@@ -23,7 +23,7 @@ function Question({
 
 	return (
 		<div>
-			<p>{question}</p>
+			<p className="question">{question}</p>
 			{answerButtonElements}
 		</div>
 	);

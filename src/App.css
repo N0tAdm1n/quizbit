@@ -7,3 +7,12 @@
 .title>p {
   font-size: 60px;
 }
+
+.question {
+  background-color: aqua;
+  width: 700px;
+  text-align: center;
+  margin: 0;
+  margin-top: 20px;
+  font-size: 1.3rem;
+}
