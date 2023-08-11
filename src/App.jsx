@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import getQAObject from "./helper/getQuestions";
 import Question from "./components/Question";
