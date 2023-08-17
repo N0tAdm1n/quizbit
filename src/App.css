@@ -59,7 +59,7 @@
 
 @media screen and (max-width: 768px) {
   #root {
-    padding: 0.6rem;
+    padding: 0.5rem;
   }
 
   .title>p {
